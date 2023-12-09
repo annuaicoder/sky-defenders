@@ -14,13 +14,13 @@
   border: 1px solid black;
   margin: 0 auto;
   display: block;
-  background-image: url("/Users/anasmaryam/Documents/images/field-background 2.jpg")
+  background-image: url("field-background 2.jpg")
 
 
 }
 
 body {
-  background-image: url("/Users/anasmaryam/Documents/images/background copy.jpg")
+  background-image: url("background copy.jpg")
 }
 
 </style>
@@ -174,7 +174,7 @@ window.addEventListener("keyup", function (e) {
   play.keyUp(keyboardCode);
 });
 Sounds.prototype.init = function () {
-    this.soundsSource = ["/Users/anasmaryam/Documents/images/sounds/shot.mp3", "/Users/anasmaryam/Documents/images/sounds/ufoDeath.mp3", "/Users/anasmaryam/Documents/images/sounds/explosion.mp3"];
+    this.soundsSource = ["sounds/shot.mp3", "sounds/ufoDeath.mp3", "sounds/explosion.mp3"];
     this.allSounds = [];
 
     for (let i = 0; i < this.soundsSource.length; i++) {
@@ -199,7 +199,7 @@ Objects.prototype.spaceship = function (x, y, spaceship_image) {
 	this.width = 34;
 	this.height = 28;
 	this.spaceship_image = spaceship_image;
-	this.spaceship_image.src = "/Users/anasmaryam/Documents/images/ship.png";
+	this.spaceship_image.src = "ship.png";
 	return this;
 };
 
@@ -219,7 +219,7 @@ Objects.prototype.ufo = function(x, y, line, column, ufo_image, level) {
 	this.ufo_image = ufo_image;
 	this.level = level;
 	//this.ufo_image.src = "images/ufo.png"
-	this.ufo_image.src = (this.level%2==0) ? "/Users/anasmaryam/Documents/images/ufo2.png" : "/Users/anasmaryam/Documents/images/ufo.png"; //even-odd level selector
+	this.ufo_image.src = (this.level%2==0) ? "ufo2.png" : "ufo.png"; //even-odd level selector
 	return this;
 };
 
@@ -429,7 +429,7 @@ InGamePosition.prototype.update = function (play) {
         // if there is collision we delete the UFO
         if (collision == true) {
             this.ufos.splice(i--, 1);
-            play.sounds.playSound('/Users/anasmaryam/Documents/images/sounds/ufoDeath.mp3');
+            play.sounds.playSound('sounds/ufoDeath.mp3');
         }
     }
 
@@ -443,7 +443,7 @@ InGamePosition.prototype.update = function (play) {
             // if there is collision we delete the bomb
             this.bombs.splice(i--, 1);
             // effect on the spaceship
-            play.sounds.playSound('/Users/anasmaryam/Documents/images/sounds/explosion.mp3');
+            play.sounds.playSound('sounds/explosion.mp3');
             play.shields--; //one hit
         }
     }
@@ -456,7 +456,7 @@ InGamePosition.prototype.update = function (play) {
             (ufo.y + ufo.height / 2) > (spaceship.y - spaceship.height / 2) &&
             (ufo.y - ufo.height / 2) < (spaceship.y + spaceship.height / 2)) {
             // if there is collision the spaceship explodes
-            play.sounds.playSound('/Users/anasmaryam/Documents/images/sounds/explosion.mp3');
+            play.sounds.playSound('sounds/explosion.mp3');
             play.shields = -1; //instant death
         }
     }
@@ -481,7 +481,7 @@ InGamePosition.prototype.shoot = function () {
         this.object = new Objects();
         this.bullets.push(this.object.bullet(this.spaceship.x, this.spaceship.y - this.spaceship.height / 2, this.setting.bulletSpeed));
         this.lastBulletTime = (new Date()).getTime();
-        play.sounds.playSound('/Users/anasmaryam/Documents/images/sounds/shot.mp3');
+        play.sounds.playSound('sounds/shot.mp3');
     }
 };
 
@@ -675,13 +675,13 @@ Sounds.prototype.playSound = function (soundName) {
 
     let soundNumber;
     switch (soundName) {
-        case '/Users/anasmaryam/Documents/images/sounds/shot.mp3':
+        case 'sounds/shot.mp3':
             soundNumber = 0;
             break;
-        case '/Users/anasmaryam/Documents/images/sounds/ufoDeath.mp3':
+        case 'sounds/ufoDeath.mp3':
             soundNumber = 1;
             break;
-        case '/Users/anasmaryam/Documents/images/sounds/explosion.mp3':
+        case 'sounds/explosion.mp3':
             soundNumber = 2;
             break;
         default:
