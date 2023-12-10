@@ -9,4 +9,3 @@ docker-compose up -d
 Access your application in a web browser by navigating to http://localhost:8080.
 
 docker-compose down
-
